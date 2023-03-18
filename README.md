@@ -9,7 +9,8 @@
 
 ## Create a file 'config.json' in config folder
  -- add this code
-        `   {
+        `
+            {
                 "development": {
                     "username": <YOUR_USERNAME>,
                     "password": <YOUR_PASSWORD>,
@@ -17,11 +18,11 @@
                     "host": "127.0.0.1",
                     "dialect": "mysql"
                 }
-            }`
-        
+            }
+        `
 
 ## run this command in terminal:
-    `npx sequelize db:migrate` 
-    `npx sequelize db:seed:all`    
+    - `npx sequelize db:migrate` 
+    - `npx sequelize db:seed:all`    
 
     
