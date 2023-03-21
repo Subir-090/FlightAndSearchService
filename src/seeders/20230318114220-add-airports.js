@@ -30,7 +30,7 @@ module.exports = {
       address: 'Agartala'
     },
     {
-      name: 'Kempegowda International Airport	',
+      name: 'Kempegowda International Airport',
       cityId: 3,
       createdAt: new Date(),
       updatedAt: new Date(),
