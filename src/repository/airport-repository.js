@@ -35,7 +35,7 @@ class AirportRepository {
                     id: id
                 }
             });
-            
+
             return numRowsChanged;
         } catch (error) {
             console.log("Something went wrong in the repository layer");
@@ -50,6 +50,7 @@ class AirportRepository {
                     id: id
                 }
             });
+            return true;
         } catch (error) {
             console.log("Something went wrong in the repository layer");
             throw {error};
