@@ -40,12 +40,12 @@ class CrudRepository {
 
     async update(modelId, data) {
         try {
-            const response = await this.model.update(data,{
-                where: {
-                    id: modelId
-                }
-            });
-            return response;
+            const entity = await this.model.findByPk(modelId);
+            for(const [key, value] of Object.entries(data)) {
+                entity[key] = value;
+            }
+            entity.save();
+            return entity;
         } catch (error) {
             console.log("Something went wrong in the repository layer");
             throw { error };
