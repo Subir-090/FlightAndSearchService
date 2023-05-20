@@ -1,49 +1,21 @@
 const { CityRepository } = require('../repository/index');
+const CrudService = require('./crud-service');
 
-class CityService {
+class CityService extends CrudService {
     constructor() {
-        this.cityService = new CityRepository();
+        super(new CityRepository());
     }
 
-    async createCity({ name }) {
+    async getAllCities(data) {
         try {
-            const city = await this.cityService.createCity({name});
-            return city;
+            const cities = await this.repository.getAll(data);
+            return cities;
         } catch (error) {
             console.log("Something went wrong in the service layer");
             throw {error};
         }
     }
 
-    async deleteCity(id) {
-        try {
-            const response = await this.cityService.deleteCity(id);
-            return response;
-        } catch (error) {
-            console.log("Something went wrong in the service layer");
-            throw {error};
-        }
-    }
-
-    async updateCity(id,data) {
-        try {
-            const updatedRows = await this.cityService.updateCity(id,data);
-            return updatedRows;
-        } catch (error) {
-            console.log("Something went wrong in the service layer");
-            throw {error};
-        }
-    }
-
-    async getCity(id) {
-        try {
-            const city = await this.cityService.getCity(id);
-            return city;
-        } catch (error) {
-            console.log("Something went wrong in the service layer");
-            throw {error};
-        }
-    }
 };
 
 module.exports = CityService;

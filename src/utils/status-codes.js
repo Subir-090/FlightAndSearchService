@@ -1,0 +1,18 @@
+CLIENT_ERROR_CODES = {
+    BAD_REQUEST: 400,
+}
+
+SERVER_ERROR_CODES = {
+
+}
+
+SUCCESS_CODES = {
+    OK: 200,
+    CREATED: 201
+}
+
+module.exports = {
+    CLIENT_ERROR_CODES,
+    SERVER_ERROR_CODES,
+    SUCCESS_CODES
+};

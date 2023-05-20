@@ -1,62 +1,38 @@
 const { City } = require('../models/index');
+const { Op } = require('sequelize');
+const CrudRepository = require('./crud-repository');
 
-class CityRepository {
-    async createCity({ name }) {
-        try {
-            const city = await City.create({ name });
-            return city;
-        } catch (error) {
-            console.log("Something went wrong in the repository layer");
-            throw {error};
-        }
+class CityRepository extends CrudRepository {   
+
+    constructor() {
+        super(City);
     }
 
-    async deleteCity(id) {
+    async getAll(filter) {
         try {
-            await City.destroy({
+            const filterObj = {
                 where: {
-                    id: id
-                }
-            });
-            return true;
-        } catch (error) {
-            console.log("Something went wrong in the repository layer");
-            throw {error};
-        }
-    }
-
-    async getCity(id) {
-        try {
-            const city = await City.findOne({
-                where:{
-                    id: id
-                }
-            });
-            return city;
-        } catch (error) {
-            console.log("Something went wrong in the repository layer");
-            throw {error};
-        }
-    }
-   
-    async updateCity(id,data) {
-        try {
-            const updatedRows = await City.update(
-                {
-                    name: data.name
-                },
-                {
-                    where:{
-                        id: id
+                    name: {
+    
                     }
                 }
-            );
-            return updatedRows;
+            }
+    
+            if(filter.name) {
+                filterObj.where.name = {
+                    [Op.like] : filter.name
+                };
+            }
+
+            const cities = await City.findAll(filterObj);
+            return cities;
         } catch (error) {
             console.log("Something went wrong in the repository layer");
             throw {error};
         }
+
     }
+
 };
 
 module.exports = CityRepository;

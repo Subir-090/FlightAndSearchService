@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class City extends Model {
     /**
@@ -10,26 +8,29 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.hasMany(models.Airport,{
+      this.hasMany(models.Airport, {
         foreignKey: {
-          name: 'cityId',
+          name: "cityId",
           type: DataTypes.INTEGER,
-          allowNull: false
+          allowNull: false,
         },
-        onDelete: 'CASCADE',
-        sourceKey: 'id'
+        onDelete: "CASCADE",
+        sourceKey: "id",
       });
     }
   }
-  City.init({
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
+  City.init(
+    {
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
+    },
+    {
+      sequelize,
+      modelName: "City",
     }
-  }, {
-    sequelize,
-    modelName: 'City',
-  });
+  );
   return City;
 };

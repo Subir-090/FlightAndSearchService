@@ -13,7 +13,7 @@ function setUpAndStartServer() {
     app.use('/api',routes);
 
     app.listen(PORT, async () => {
-        console.log(`Server started at ${PORT}`);      
+        console.log(`Server started at ${PORT}`);     
     });
 }
 
