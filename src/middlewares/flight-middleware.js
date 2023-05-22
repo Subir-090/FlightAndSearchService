@@ -1,4 +1,4 @@
-const { CLIENT_ERROR_CODES, SUCCESS_CODES, SERVER_ERROR_CODES } = require('../utils/status-codes');
+const { StatusCodes } = require('http-status-codes');
 
 function validateCreateFlight(req,res,next) {
     if(!req.body.departureAirportId || !req.body.destinationAirportId
@@ -6,7 +6,7 @@ function validateCreateFlight(req,res,next) {
         || !req.body.arrivalTime || !req.body.flightNumber
         || !req.body.price) {
 
-            return res.status(CLIENT_ERROR_CODES.BAD_REQUEST).json({
+            return res.status(StatusCodes.BAD_REQUEST).json({
                 data: {},
                 success: false,
                 message: 'Invalid data',
