@@ -44,7 +44,7 @@ class CrudRepository {
             for(const [key, value] of Object.entries(data)) {
                 entity[key] = value;
             }
-            entity.save();
+            await entity.save();
             return entity;
         } catch (error) {
             console.log("Something went wrong in the repository layer");
