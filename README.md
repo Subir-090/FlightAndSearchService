@@ -7,7 +7,7 @@
     - set PORT variable
         - example: PORT=3000
 
-## Create a file 'config.json' in config folder
+## Create a file 'https://github.com/Subir-090/FlightAndSearchService/releases/tag/v2.0' in config folder
  -- add this code
         `
             {
